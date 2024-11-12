@@ -1,15 +1,14 @@
 package it.unibo.encapsulation.interfaces;
 
-public class SimpleBankAccount implements BankAccount {
+public class StrictBankAccount implements BankAccount{
 
-    
-    private double balance;
-    private int transactions = 0; 
+    private double balance; 
+    private int transactions = 0;
     private static double ATM_TRANSACTION_FEE = 1;
     private final int id;
 
-    // costructor
-    public SimpleBankAccount(final int id, final double balance) {
+    //costructor
+    public StrictBankAccount(final int id, final double balance) {
         this.id = id;
     }
 
@@ -37,8 +36,10 @@ public class SimpleBankAccount implements BankAccount {
     }
 
     public void withdraw(final int id, final double amount) {
-        if(getId() == id) {
-            this.transacionOp(-amount);
+        if (this.balance >= amount) {
+            if(getId() == id) {
+                this.transacionOp(-amount);
+            }
         }
     }
 
@@ -49,12 +50,15 @@ public class SimpleBankAccount implements BankAccount {
     }
 
     public void withdrawFromATM(final int id, final double amount) {
-        if(getId() == id) {
-            this.transacionOp(-(amount+ATM_TRANSACTION_FEE));
-        } 
+        if (this.balance >= amount){
+            if(getId() == id) {
+                this.transacionOp(-(amount+ATM_TRANSACTION_FEE));
+            } 
+        }
     }
 
     public void chargeManagementFees(final int id) {
-
+        this.balance -= (5 + (0.1 * this.transactions));
     }
+
 }

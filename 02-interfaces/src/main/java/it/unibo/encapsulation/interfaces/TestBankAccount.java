@@ -6,12 +6,12 @@ public class TestBankAccount {
     }
 
     public static void main(final String[] args) {
-        /*
-         * 1) Creare l' AccountHolder relativo a Andrea Rossi con id 1
-         */
-        /*
-         * 2) Creare l' AccountHolder relativo a Alex Bianchi con id 2
-         */
+        // 1) Creare l' AccountHolder relativo a Andrea Rossi con id 1
+        AccountHolder andreaRossi = new AccountHolder("Andrea", "Rossi", 1);
+
+        // 2) Creare l' AccountHolder relativo a Alex Bianchi con id 2
+        AccountHolder alexBianchi = new AccountHolder("Alex", "Bianchi", 2);
+
         /*
          * 3) Dichiarare due variabili di tipo BankAccount ed inizializzarle,
          * rispettivamente, con oggetti di tipo SimpleBankAccount per il conto di
